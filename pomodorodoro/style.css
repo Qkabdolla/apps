@@ -1,0 +1,75 @@
+@font-face { font-family: Onest; src: url('Onest.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: Outfit; src: url('Outfit.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+
+:root {
+  --bg: #F7F6F3;
+  --surface: #FFFFFF;
+  --text: #1C1A19;
+  --muted: #6B6461;
+  --line: rgba(28, 26, 25, .10);
+  --accent: #D63E22;
+  --glow: rgba(255, 138, 61, .22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0B0706;
+    --surface: #16100E;
+    --text: #F5F1EF;
+    --muted: #A69C97;
+    --line: rgba(255, 255, 255, .10);
+    --accent: #FF7A4D;
+    --glow: rgba(200, 57, 31, .40);
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse 80% 340px at 50% 0, var(--glow), transparent 75%) no-repeat, var(--bg);
+  color: var(--text);
+  font: 17px/1.6 Onest, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+main { max-width: 680px; margin: 0 auto; padding: 48px 20px 64px; }
+
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 48px; }
+.brand { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
+.brand img { width: 40px; height: 40px; border-radius: 9px; }
+.brand span { font: 600 17px/1 Outfit, Onest, sans-serif; letter-spacing: .08em; }
+
+.langs { display: flex; gap: 4px; padding: 3px; border: 1px solid var(--line); border-radius: 99px; }
+.langs button {
+  border: 0; background: none; color: var(--muted); font: 600 13px/1 Onest, sans-serif;
+  padding: 7px 12px; border-radius: 99px; cursor: pointer;
+}
+.langs button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+
+h1 { font-size: clamp(30px, 7vw, 42px); line-height: 1.1; letter-spacing: -.02em; font-weight: 700; margin-bottom: 8px; }
+h2 { font-size: 20px; line-height: 1.3; font-weight: 650; margin: 36px 0 10px; }
+.date { color: var(--muted); font-size: 15px; margin-bottom: 28px; }
+.lead { font-size: 19px; margin-bottom: 24px; }
+p + p { margin-top: 12px; }
+ul { list-style: none; display: grid; gap: 12px; }
+li { padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+li b { display: block; margin-bottom: 2px; }
+a { color: var(--accent); }
+
+.hero { text-align: center; padding-top: 24px; }
+.hero img { width: 120px; height: 120px; border-radius: 27px; box-shadow: 0 20px 50px var(--glow); margin-bottom: 24px; }
+.hero h1 { font-family: Outfit, Onest, sans-serif; }
+.hero .lead { color: var(--muted); }
+.links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.links a {
+  padding: 12px 20px; border-radius: 99px; text-decoration: none; font-weight: 600;
+  background: var(--surface); border: 1px solid var(--line); color: var(--text);
+}
+
+.contact { margin-top: 8px; padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+.contact a { font-weight: 600; font-size: 19px; overflow-wrap: anywhere; }
+
+footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; gap: 16px; }
+footer a { color: inherit; }
+
+/* Язык: без скрипта видна английская версия, скрипт выбирает по браузеру или по кнопке */
+[lang="ru"] .en, [lang="en"] .ru { display: none !important; }
